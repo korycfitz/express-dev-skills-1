@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Express Notes</title>
+</head>
+<body>
+  <h1>Notes as of <%= time %></h1>
+  <ul>
+    <% notes.forEach(note => { %>
+      <li>
+        <form 
+        action="/notes/<%= note._id %>?_method=DELETE"
+        class="delete-note"
+        method="POST"
+      >
+        <button type="submit">X</button>
+      </form>
+        <a href="/notes/<%= note._id %>"><%= note.text %></a>
+        -
+        <%= note.studied ? 'Studied' : 'Need to Study!' %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
